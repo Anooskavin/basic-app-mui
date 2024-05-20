@@ -16,6 +16,9 @@ import { CardMedia } from "@mui/material";
 import Button from "@mui/material/Button";
 
 const defaultTheme = createTheme({
+    palette: {
+        type: 'dark',
+      },
   typography: {
     fontFamily: ["sans-serif"].join(","),
   },
@@ -27,27 +30,21 @@ const defaultTheme = createTheme({
 
 export default function Home() {
 
-    const [theme, setTheme] = useState('')
+   
 
-    useEffect(()=>{
-
-    },[localStorage.getItem('theme')])
-
-    function getTheme(value){
-            // console.log(value);
-            setTheme(value)
-    }
+    
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
-      <NavBar page={"Home"} theme={getTheme} />
+      <NavBar page={"Home"}  />
       <div
         style={{
-          backgroundColor: localStorage.getItem('theme') === "dark"  ?     "#141314" : "#fefbff" ,
+          backgroundColor: 'background.default',
           width: "100%",
           height: "100vh",
           overflow: "auto",
           display: "flex",
           flexDirection: "row",
+          color: "text.primary",
         }}
       >
         {/* <ThemeProvider theme={defaultTheme}>
@@ -56,12 +53,11 @@ export default function Home() {
         <Box
           m={1}
           sx={{
-            bgcolor: localStorage.getItem('theme') === 'dark' ?  "#1c1b1d"  : '#f8f1f6' ,
+            bgcolor: 'divider' ,
             height: "50vh",
             width: "50%",
             borderRadius: 3,
 
-            color:  localStorage.getItem('theme') === 'dark' ?   "#e6e1e3" : "black" ,
             marginTop: "20px",
           }}
         >
@@ -84,18 +80,14 @@ export default function Home() {
               padding: 1,
               borderRadius: 5,
               marginLeft: 4,
-              bgcolor: "#9f86fe",
-              color: "black",
-              "&:hover": {
-                bgcolor: "#7e62d0",
-              },
+              bgcolor: "button.background",
+              color: "text.button",
             }}
           >
             {" "}
             <span
               style={{
                 textTransform: "none",
-                color: localStorage.getItem('theme') === 'dark' ? "black" : "white",
                 fontSize: 25,
                 padding: 9,
               }}
@@ -107,12 +99,10 @@ export default function Home() {
         <Box
           m={1}
           sx={{
-            bgcolor: "#1c1b1d",
+            bgcolor: 'divider' ,
             height: "50vh",
             width: "50%",
             borderRadius: 3,
-
-            color:  localStorage.getItem('theme') === 'dark' ?   "#e6e1e3" : "black" ,
             marginTop: "20px",
           }}
         >

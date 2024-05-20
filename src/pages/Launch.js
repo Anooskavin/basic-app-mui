@@ -7,13 +7,17 @@ import {
   AppBar,
   Toolbar,
   Typography,
+  IconButton,
   Tab,
   Tabs,
 } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CardMedia } from "@mui/material";
+
 import Button from "@mui/material/Button";
+import { useThemeContext } from "../theme/ThemeContextProvider";
+
 
 const defaultTheme = createTheme({
   typography: {
@@ -21,34 +25,30 @@ const defaultTheme = createTheme({
   },
 });
 export default function Launch() {
-    const [theme, setTheme] = useState('')
 
-    useEffect(()=>{
-
-    },[localStorage.getItem('theme')])
+    
 
 
-    function getTheme(value){
-            console.log(value);
-            setTheme(value)
-    }
+    
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
-      <NavBar page={"Get Started"} theme={getTheme} />
+      <NavBar page={"Get Started"}  />
       <div
         style={{
-          backgroundColor: localStorage.getItem('theme') === "dark"  ?  "#141314" :  "#fefbff" ,
+        bgcolor: "background.default",
+        color: "text.primary",
           width: "100%",
           height: "100vh",
           overflow: "auto",
         }}
       >
-        <ThemeProvider theme={defaultTheme}>
-          <CssBaseline />
+        {/* <ThemeProvider theme={defaultTheme}>
+          <CssBaseline /> */}
 
           <Typography
             variant="h3"
-            sx={{ fontSize: 72, color:  localStorage.getItem('theme') === 'dark' ?  "#e6e1e3": "black"  , padding: 8 }}
+            sx={{ fontSize: 72, 
+                 padding: 8 }}
           >
             {" "}
             News & Launches{" "}
@@ -59,11 +59,10 @@ export default function Launch() {
            
             sx={{
               marginLeft: 5,
-              bgcolor:  localStorage.getItem('theme') === 'dark' ?   "#1c1b1d" :"#f8f1f6"   ,
+              bgcolor:  "divider"   ,
               height: "50vh",
               width: "30%",
               borderRadius: 3,
-              color: localStorage.getItem('theme') === 'dark' ?  "#e6e1e3" : "black"  ,
               marginTop: "20px",
             }}
           >
@@ -89,11 +88,10 @@ export default function Launch() {
           <Box
             m={1}
             sx={{
-                bgcolor:  localStorage.getItem('theme') === 'dark' ?   "#1c1b1d" :"#f8f1f6"   ,
+                bgcolor:  "divider"   ,
                 height: "50vh",
               width: "30%",
               borderRadius: 3,
-              color: localStorage.getItem('theme') === 'dark' ?  "#e6e1e3" : "black"  ,
               marginTop: "20px",
             }}
           >
@@ -122,12 +120,11 @@ export default function Launch() {
            
             sx={{
              
-                bgcolor:  localStorage.getItem('theme') === 'dark' ?   "#1c1b1d" :"#f8f1f6"   ,
-                          height: "50vh",
+                bgcolor:  "divider"   ,
+                height: "50vh",
               width: "30%",
               borderRadius: 3,
-              color: localStorage.getItem('theme') === 'dark' ?  "#e6e1e3" : "black"  ,
-              marginTop: "20px",
+             marginTop: "20px",
             }}
           >
             <CardMedia
@@ -148,8 +145,10 @@ export default function Launch() {
               ever since the 1500s
             </Typography>
           </Box>
+
+          
           </div>
-        </ThemeProvider>
+        {/* </ThemeProvider> */}
       </div>
     </div>
   );

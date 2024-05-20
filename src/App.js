@@ -7,6 +7,11 @@ import { useEffect, useState } from 'react';
 import Load from './pages/Load';
 import Launch from './pages/Launch';
 import router from './components/Route'
+import React from 'react';
+import { useThemeContext } from './theme/ThemeContextProvider';
+import { CssBaseline, ThemeProvider } from "@mui/material";
+
+
 
 function App() {
   const {isAuthenticated} = useAuth();
@@ -18,17 +23,15 @@ function App() {
     });
   }, []);
 
+  const { theme } = useThemeContext();
+
 
   return (
-    // <Router>
-    //   <Routes>
-    //     <Route path='/login' element={<Login />} />
-    //     {loading ? (  <Route path="*" element={<Load />} />      ) : (<Route  path="/" element={isAuthenticated ?  <Home /> : <Login />} />)}
-    //     {loading ? (  <Route path="*" element={<Load />} />      ) : (<Route  path="/launch" element={isAuthenticated ?  <Launch /> : <Login />} />)}
-
-    //   </Routes>
-    // </Router>
+<ThemeProvider theme={theme}> 
+      <CssBaseline />
+    
     <RouterProvider router={router} />
+    </ThemeProvider>
   );
 }
 

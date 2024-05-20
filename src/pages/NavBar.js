@@ -8,6 +8,7 @@ import {
   Box,
   AppBar,
   Toolbar,
+  IconButton,
   Typography,
   Tab,
   Tabs,
@@ -21,6 +22,9 @@ import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
 import WbSunnyRoundedIcon from "@mui/icons-material/WbSunnyRounded";
 import NightlightRoundRoundedIcon from '@mui/icons-material/NightlightRoundRounded';
 import { Link } from "react-router-dom";
+import { useThemeContext } from "../theme/ThemeContextProvider";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
 
 
 const defaultTheme = createTheme({
@@ -37,7 +41,6 @@ export default function NavBar(props) {
   
   const [theme, setTheme] = useState(localStorage.getItem('theme') )
 
-  console.log(localStorage.getItem('theme') +"hello" || 'dark');
 
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
@@ -52,8 +55,12 @@ export default function NavBar(props) {
 
 
   
-  const navBarMenus = ["Home", "Get Started", "Develop", "Login"];
-
+  const navBarMenus = [
+    { name: "Home", icon: <FoundationRoundedIcon sx={{ color: 'navbar.search' }} /> },
+    { name: "Get Started", icon: <AppsOutlinedIcon sx={{ color: 'navbar.search' }} /> },
+    { name: "Develop", icon: <CodeOutlinedIcon sx={{ color: 'navbar.search' }} /> },
+    { name: "Logout", icon: <BookRoundedIcon sx={{ color: 'navbar.search' }} /> },
+  ];
 
 function changeTheme(){
   if(theme === 'dark'){
@@ -68,12 +75,21 @@ function changeTheme(){
 
   }
 
+}    const { mode, toggleColorMode } = useThemeContext();
+
+function logout(name){
+  if(name==="Logout") {
+    localStorage.clear()
+    window.location.replace('/')
+  }
 }
 
+
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <div>
+    {/* <ThemeProvider theme={defaultTheme}> */}
       {/* <Container maxWidth="sm" > */}
-      <CssBaseline />
+      {/* <CssBaseline /> */}
       <Box
         sx={{
           //   marginTop: "50%",
@@ -83,7 +99,7 @@ function changeTheme(){
           justifyContent: "space-between",
           // position: 'fixed',
           textAlign: "center", 
-          bgcolor: theme ==="dark" ?  "#211F21" : '#f2ecee',
+          bgcolor: 'background.navbar',
           height: "100vh",
           width: "10vh",
         }}
@@ -93,7 +109,7 @@ function changeTheme(){
             <Avatar
               sx={{
                 ml: 0.5,
-                bgcolor: theme === 'dark' ? "#553f5d" : '#dcdaf5',
+                bgcolor: 'navbar.avatar',
                 width: 60,
                 height: 60,
                 borderRadius: 3,
@@ -104,122 +120,39 @@ function changeTheme(){
               onMouseLeave={() => setSearchHovered(false)}
             >
               <SearchIcon
-                style={{ fill: theme =="dark" ? "white" : "#4d4156" , color: theme ==='dark' ? 'white' : "#5f5168" }}
+                sx={{   color: 'navbar.search' }}
               />
             </Avatar>
           </Grid>
 
-          {navBarMenus.map((index, item) => (
+          {navBarMenus.map((menu, index) => (
             <Grid item xs={6} sm={12} key={index}>
               <Avatar
                 sx={{
                   ml: 0.5,
-                  bgcolor: navBarMenus[item] === props.page ? theme === 'dark' ?  "#553f5d" : "#dcdaf5" : hoveredIndex === index ? theme === 'dark' ? "#553f5d" :  "#dcdaf5" :"transparent",
+                  bgcolor: menu.name === props.page ? 'navbar.avatar' : hoveredIndex === index ? 'navbar.avatar' :"transparent",
                   width: 60,
-                  // height: 40,
                   borderRadius: 5,
                   opacity: hoveredIndex === index ? 0.8 : 1,
                 }}
                 onMouseEnter={() => handleMouseEnter(index)}
                 onMouseLeave={handleMouseLeave}
               >
-                {navBarMenus[item] == "Home" ? (
-                 <Link to="/" > <FoundationRoundedIcon style={{ color: theme ==='dark' ? 'white' : "#4d4156" }}  /> </Link> 
-                ) : navBarMenus[item] == "Get Started" ? (
-                  <Link to="/launch" ><AppsOutlinedIcon style={{ color: theme ==='dark' ? 'white' : "#4d4156" }} /> </Link> 
-                ) : navBarMenus[item] == "Develop" ? (
-                  <Link to="/" ><CodeOutlinedIcon style={{ color: theme ==='dark' ? 'white' : "#4d4156" }} /> </Link> 
-                ) : navBarMenus[item] == "Login" ? (
-                  <Link to="/" ><BookRoundedIcon style={{ color: theme ==='dark' ? 'white' : "#4d4156" }} /> </Link> 
-                ) : (
-                  <></>
-                )}
+                <Link to={menu.name === "Get Started" ? "/launch" : "/"} onClick={()=> logout(menu.name)} >
+                  {menu.icon}
+                </Link> 
               </Avatar>
-              <Typography variant="subtitle2" color={theme === "dark" ? "#dfddf8" : "#4d4156"} mb={2}>
-                {navBarMenus[item]}
+              <Typography variant="subtitle2" color={ 'navbar.name' } mb={2}>
+                {menu.name}
               </Typography>
             </Grid>
           ))}
 
-          {/* <Grid item xs={6} sm={12}>
-            <Avatar
-              sx={{
-                ml: 1,
-                bgcolor: "#553f5d",
-                width: 60,
-                // height: 40,
-                borderRadius: 5,
-              }}
-              //   onMouseEnter={() => setSearchHovered(true)}
-              //   onMouseLeave={() => setSearchHovered(false)}
-            >
-              <FoundationRoundedIcon />
-            </Avatar>
-            <Typography variant="subtitle2" color={"#dfddf8"} mb={2}>
-              Home
-            </Typography>
-          </Grid>
-
-          <Grid item xs={6} sm={12}>
-            <Avatar
-              sx={{
-                ml: 1,
-                bgcolor: "#553f5d",
-                width: 60,
-                // height: 40,
-                borderRadius: 5,
-              }}
-              //   onMouseEnter={() => setSearchHovered(true)}
-              //   onMouseLeave={() => setSearchHovered(false)}
-            >
-              <AppsOutlinedIcon />
-            </Avatar>
-            <Typography variant="subtitle2" color={"#dfddf8"} mb={2}>
-              Get Started
-            </Typography>
-          </Grid>
-
-          <Grid item xs={6} sm={12}>
-            <Avatar
-              sx={{
-                ml: 1,
-                bgcolor: "#553f5d",
-                width: 60,
-                // height: 40,
-                borderRadius: 5,
-              }}
-              //   onMouseEnter={() => setSearchHovered(true)}
-              //   onMouseLeave={() => setSearchHovered(false)}
-            >
-              <CodeOutlinedIcon />
-            </Avatar>
-            <Typography variant="subtitle2" color={"#dfddf8"} mb={2}>
-              Develop
-            </Typography>
-          </Grid>
-
-          <Grid item xs={6} sm={12}>
-            <Avatar
-              sx={{
-                ml: 1,
-                bgcolor: "#553f5d",
-                width: 60,
-                // height: 40,
-                borderRadius: 5,
-              }}
-              //   onMouseEnter={() => setSearchHovered(true)}
-              //   onMouseLeave={() => setSearchHovered(false)}
-            >
-              <BookRoundedIcon />
-            </Avatar>
-            <Typography variant="subtitle2" color={"#dfddf8"} mb={2}>
-              Login
-            </Typography>
-          </Grid> */}
+          
         </Grid>
 
         <Grid item xs={6} sm={12} mb={2}>
-          <div onClick={changeTheme}>
+          <div onClick={toggleColorMode}>
           <Avatar
             sx={{
               ml: 1,
@@ -234,13 +167,13 @@ function changeTheme(){
             
           >
 
-            { theme === 'dark' ? themeHovered ? (
+            { mode === 'dark' ? themeHovered ? (
               <WbSunnyRoundedIcon  style={{ fill: "white" }} />
             ) : (
-              <WbSunnyOutlinedIcon />
+              <WbSunnyOutlinedIcon style={{ fill: "white" }} />
             ) : <></> }
 
-            { theme === 'light' ? themeHovered ? (
+            { mode === 'light' ? themeHovered ? (
               <NightlightRoundRoundedIcon   />
             ) : (
               <NightlightRoundRoundedIcon style={{ fill: "black" }} />
@@ -248,8 +181,14 @@ function changeTheme(){
 
           </Avatar>
           </div>
+
+          
+          {/* <IconButton sx={{ ml: 1 }} onClick={toggleColorMode} color="inherit">
+        {mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
+      </IconButton> */}
         </Grid>
       </Box>
-    </ThemeProvider>
+    {/* </ThemeProvider> */}
+    </div>
   );
 }
