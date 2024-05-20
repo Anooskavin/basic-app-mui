@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import NavBar from "./NavBar.tsx";
+import NavBar from "../components/NavBar.tsx";
 import {
   Box,
   Typography

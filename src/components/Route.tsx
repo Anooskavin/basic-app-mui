@@ -4,6 +4,7 @@ import Login from '../pages/Login.tsx';
 import Home from '../pages/Home.tsx';
 import Launch from '../pages/Launch.tsx';
 import ProtectedRoute from './ProtectedRoute.tsx';
+import Logout from '../pages/Logout.tsx';
 
 
 
@@ -25,6 +26,10 @@ const router = createBrowserRouter(
           path: '/launch',
           element: <Launch />
         },
+        {
+          path: '/logout',
+          element: <Logout />
+        }
       ]
     },
     {
