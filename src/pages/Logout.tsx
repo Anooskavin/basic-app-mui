@@ -18,7 +18,7 @@ export default function Logout() {
         height: "100vh",
       }}
     >
-      <CircularProgress sx={{color:"background.navbar"}} />
+      <CircularProgress sx={{color:"background"}} />
     </div>
   );
 }

@@ -15,6 +15,7 @@ const router = createBrowserRouter(
       element: <Login />,
       index: true
     },
+    
     {
       element: <ProtectedRoute  />,
       children: [
@@ -29,7 +30,8 @@ const router = createBrowserRouter(
         {
           path: '/logout',
           element: <Logout />
-        }
+        },
+        
       ]
     },
     {
