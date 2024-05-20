@@ -8,7 +8,7 @@ export default function Logout() {
       localStorage.clear();
       window.location.replace("/");
     }, 1000);
-  }, [1000]);
+  }, );
   return (
     <div
       style={{

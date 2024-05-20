@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import NavBar from "../components/NavBar.tsx";
 import {
   Box,
@@ -16,7 +16,7 @@ export default function Launch() {
     
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
-      <NavBar page={"Get Started"}  />
+      <NavBar page={"Launch"}  />
       <div
         style={{
         backgroundColor: "background.default",
@@ -24,7 +24,7 @@ export default function Launch() {
           width: "100%",
           height: "100vh",
           overflow: "auto",
-        }}
+        }}  
       >
      
 

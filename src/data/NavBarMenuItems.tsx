@@ -11,7 +11,7 @@ export const NavBarMenuItems = [
     url: "/",
   },
   {
-    name: "Get Started",
+    name: "Launch",
     icon: <AppsOutlinedIcon sx={{ color: "navbar.search" }} />,
     url: "/launch",
   },

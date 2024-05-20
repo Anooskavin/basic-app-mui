@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import NavBar from "../components/NavBar.tsx";
 import {
   Box,
@@ -9,14 +9,7 @@ import { CardMedia } from "@mui/material";
 import Button from "@mui/material/Button";
 
 
-
-// contextprovider,(theme provoder)
-// life component
-// 
-
-export default function Home() {
-
-   
+export default function Home() {   
 
     
   return (

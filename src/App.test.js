@@ -1,23 +1,41 @@
 import { render, screen } from '@testing-library/react';
+import { createTheme } from "@mui/material";
 
-import { MemoryRouter } from 'react-router';
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import {  RouterProvider, createBrowserRouter    } from 'react-router-dom';
 
 
-import Home from './pages/Login';
 
-jest.mock('./pages/Login');
 
 
 test('renders learn react link', () => {
 
+  const mockTheme = createTheme({
+    palette: {
+      mode: 'light',
+    },
+  });
+  
+  const mockRoutes = [
+    {
+      path: '/',
+      element: <div>Home Page</div>,
+    },
+    {
+      path: '/about',
+      element: <div>About Page</div>,
+    },
+  ];
+  
+  const mockRouter = createBrowserRouter(mockRoutes, { initialEntries: ['/'] })
 
-  Home.mockImplementation(() => <div>Home</div>); 
   render(
-    <MemoryRouter>
-      <Home/>
-    </MemoryRouter>
+    <ThemeProvider theme={mockTheme}>
+        <CssBaseline />
+        <RouterProvider router={mockRouter} />
+     </ThemeProvider>
   );
-  expect(screen.getByText("Home")).toBeInTheDocument();
+  expect(screen.getByText("Home Page")).toBeInTheDocument();
   
 });
 

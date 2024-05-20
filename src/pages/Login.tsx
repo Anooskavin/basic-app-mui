@@ -18,17 +18,15 @@ export default function Login() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
-    const formDataUsername = data.get('username');
-    const formDataPassword = data.get('password');
+    const formDataUsername: any  = data.get('username') ;
+    const formDataPassword: any = data.get('password');
 
-    const username = formDataUsername !== null ? formDataUsername.toString() : '';
-    const password = formDataPassword !== null ? formDataPassword.toString() : '';
-
+   
     const loginData = {
-      username,
-      password,
+      username : formDataUsername,
+      password : formDataPassword
     };
-    
+
     fetch('http://127.0.0.1:3001/login', {
     method: 'POST',
     headers: {
@@ -60,6 +58,7 @@ export default function Login() {
     })
     .catch(error => {
       console.error('Error:', error);
+      setErrorMessage("Network Error")
     });
   }
 

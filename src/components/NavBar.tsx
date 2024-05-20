@@ -6,10 +6,6 @@ import {
   Typography
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import FoundationRoundedIcon from "@mui/icons-material/FoundationRounded";
-import AppsOutlinedIcon from "@mui/icons-material/AppsOutlined";
-import CodeOutlinedIcon from "@mui/icons-material/CodeOutlined";
-import BookRoundedIcon from "@mui/icons-material/BookRounded";
 import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
 import WbSunnyRoundedIcon from "@mui/icons-material/WbSunnyRounded";
 import NightlightRoundRoundedIcon from "@mui/icons-material/NightlightRoundRounded";
@@ -22,7 +18,6 @@ export default function NavBar(props) {
   const [searchHovered, setSearchHovered] = useState<Boolean>(false);
   const [themeHovered, setThemeHovered] = useState<Boolean>(false);
 
-  const [theme, setTheme] = useState<any>(localStorage.getItem("theme"));
 
   const [hoveredIndex, setHoveredIndex] = useState<any>(null);
 
@@ -36,40 +31,13 @@ export default function NavBar(props) {
 
 
 
-  const navBarMenus = [
-    {
-      name: "Home",
-      icon: <FoundationRoundedIcon sx={{ color: "navbar.search" }} />,
-      url: "/",
-    },
-    {
-      name: "Get Started",
-      icon: <AppsOutlinedIcon sx={{ color: "navbar.search" }} />,
-      url: "/launch",
-    },
-    {
-      name: "Develop",
-      icon: <CodeOutlinedIcon sx={{ color: "navbar.search" }} />,
-      url: "/",
-    },
-    {
-      name: "Logout",
-      icon: <BookRoundedIcon sx={{ color: "navbar.search" }} />,
-      url: "/logout",
-    },
-  ];
 
-  // navbarMenus should be 
+
 
   
   const { mode, toggleColorMode } = useThemeContext();
 
-  function logout(name) {
-    if (name === "Logout") {
-      localStorage.clear();
-      window.location.replace("/");
-    }
-  }
+  
 
   return (
     <div>
@@ -91,15 +59,17 @@ export default function NavBar(props) {
             <Avatar
               sx={{
                 ml: 0.5,
-                bgcolor: "navbar.avatar",
+                bgcolor:  "navbar.avatar",
                 width: 60,
                 height: 60,
                 borderRadius: 3,
                 mb: 3,
                 mt: 3,
+                opacity: searchHovered ? 1 : 0.9,
               }}
               onMouseEnter={() => setSearchHovered(true)}
               onMouseLeave={() => setSearchHovered(false)}
+              data-testid={'search-icon'}
             >
               <SearchIcon sx={{ color: "navbar.search" }} />
             </Avatar>
@@ -122,6 +92,7 @@ export default function NavBar(props) {
                 }}
                 onMouseEnter={() => handleMouseEnter(index)}
                 onMouseLeave={handleMouseLeave}
+                data-testid= {"icon-hover-"+menu.name}
               >
                 <Link
                   to={menu.url}>
@@ -148,12 +119,13 @@ export default function NavBar(props) {
               }}
               onMouseEnter={() => setThemeHovered(true)}
               onMouseLeave={() => setThemeHovered(false)}
+              data-testid={'theme-avatar'}
             >
               {mode === "dark" ? (
                 themeHovered ? (
-                  <WbSunnyRoundedIcon style={{ fill: "white" }} />
+                  <WbSunnyRoundedIcon style={{ fill: "white" }} data-testid={'theme-hover-dark-icon'} />
                 ) : (
-                  <WbSunnyOutlinedIcon style={{ fill: "white" }} />
+                  <WbSunnyOutlinedIcon style={{ fill: "white" }} data-testid={'theme-dark-icon'} />
                 )
               ) : (
                 <></>
@@ -161,9 +133,9 @@ export default function NavBar(props) {
 
               {mode === "light" ? (
                 themeHovered ? (
-                  <NightlightRoundRoundedIcon />
+                  <NightlightRoundRoundedIcon data-testid={'theme-hover-light-icon'}/>
                 ) : (
-                  <NightlightRoundRoundedIcon style={{ fill: "black" }} />
+                  <NightlightRoundRoundedIcon style={{ fill: "black" }} data-testid={'theme-light-icon'} />
                 )
               ) : (
                 <></>
