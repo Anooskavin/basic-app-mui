@@ -1,29 +1,13 @@
 import React, { useEffect, useState } from "react";
-import NavBar from "./NavBar";
+import NavBar from "./NavBar.tsx";
 import {
-  Avatar,
-  Grid,
   Box,
-  AppBar,
-  Toolbar,
   Typography,
-  IconButton,
-  Tab,
-  Tabs,
 } from "@mui/material";
-import CssBaseline from "@mui/material/CssBaseline";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CardMedia } from "@mui/material";
 
-import Button from "@mui/material/Button";
-import { useThemeContext } from "../theme/ThemeContextProvider";
 
 
-const defaultTheme = createTheme({
-  typography: {
-    fontFamily: ["sans-serif"].join(","),
-  },
-});
 export default function Launch() {
 
     
@@ -35,15 +19,14 @@ export default function Launch() {
       <NavBar page={"Get Started"}  />
       <div
         style={{
-        bgcolor: "background.default",
+        backgroundColor: "background.default",
         color: "text.primary",
           width: "100%",
           height: "100vh",
           overflow: "auto",
         }}
       >
-        {/* <ThemeProvider theme={defaultTheme}>
-          <CssBaseline /> */}
+     
 
           <Typography
             variant="h3"
@@ -148,7 +131,6 @@ export default function Launch() {
 
           
           </div>
-        {/* </ThemeProvider> */}
       </div>
     </div>
   );

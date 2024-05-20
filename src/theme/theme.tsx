@@ -1,4 +1,4 @@
-import { amber, deepOrange, grey ,white} from "@mui/material/colors";
+import { amber, deepOrange, grey } from "@mui/material/colors";
 
 const theme = {
   palette: {

@@ -5,23 +5,30 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Avatar, Box, Grid, TextField, Typography } from "@mui/material";
 import PersonIcon from '@mui/icons-material/Person';
 import Button from '@mui/material/Button';
-import {useNavigate} from 'react-router-dom'
 
 
 const defaultTheme =  createTheme()
 
+
 export default function Login() {
 
-  const [errorMessage, setErrorMessage] =  useState("")
-  const  navigate = useNavigate(); 
+  const [errorMessage, setErrorMessage] =  useState<String>("")
 
   function submitForm(event){
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+
+    const formDataUsername = data.get('username');
+    const formDataPassword = data.get('password');
+
+    const username = formDataUsername !== null ? formDataUsername.toString() : '';
+    const password = formDataPassword !== null ? formDataPassword.toString() : '';
+
     const loginData = {
-      username: data.get('username'),
-      password: data.get('password'),
+      username,
+      password,
     };
+    
     fetch('http://127.0.0.1:3001/login', {
     method: 'POST',
     headers: {

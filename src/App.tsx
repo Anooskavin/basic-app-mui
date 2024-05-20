@@ -1,14 +1,10 @@
 import './App.css';
 import {  RouterProvider  ,BrowserRouter as Router,Routes,Route  } from 'react-router-dom';
-import Login from './pages/Login';
-import useAuth from './hooks/useAuth';
-import Home from './pages/Home';
+import useAuth from './hooks/useAuth.js';
 import { useEffect, useState } from 'react';
-import Load from './pages/Load';
-import Launch from './pages/Launch';
-import router from './components/Route'
+import router from './components/Route.tsx'
 import React from 'react';
-import { useThemeContext } from './theme/ThemeContextProvider';
+import { useThemeContext } from './theme/ThemeContextProvider.tsx';
 import { CssBaseline, ThemeProvider } from "@mui/material";
 
 

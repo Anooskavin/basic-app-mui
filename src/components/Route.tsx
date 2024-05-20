@@ -1,13 +1,11 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import useAuth from '../hooks/useAuth';
-import Login from '../pages/Login';
-import Home from '../pages/Home';
-import Launch from '../pages/Launch';
-import ProtectedRoute from './ProtectedRoute';
+import Login from '../pages/Login.tsx';
+import Home from '../pages/Home.tsx';
+import Launch from '../pages/Launch.tsx';
+import ProtectedRoute from './ProtectedRoute.tsx';
 
 
-// const { isAuthenticated } = useAuth()
 
 const router = createBrowserRouter(
   [

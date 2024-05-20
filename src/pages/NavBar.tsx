@@ -22,27 +22,22 @@ import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
 import WbSunnyRoundedIcon from "@mui/icons-material/WbSunnyRounded";
 import NightlightRoundRoundedIcon from '@mui/icons-material/NightlightRoundRounded';
 import { Link } from "react-router-dom";
-import { useThemeContext } from "../theme/ThemeContextProvider";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import Brightness7Icon from "@mui/icons-material/Brightness7";
+import { useThemeContext } from "../theme/ThemeContextProvider.tsx";
 
 
-const defaultTheme = createTheme({
-  typography: {
-    fontFamily: ["BlinkMacSystemFont"].join(","),
-    fontSize: 12,
-  },
-});
+
+
+
 
 
 export default function NavBar(props) {
-  const [searchHovered, setSearchHovered] = useState(false);
-  const [themeHovered, setThemeHovered] = useState(false);
+  const [searchHovered, setSearchHovered] = useState<Boolean>(false);
+  const [themeHovered, setThemeHovered] = useState<Boolean>(false);
   
-  const [theme, setTheme] = useState(localStorage.getItem('theme') )
+  const [theme, setTheme] = useState<any>(localStorage.getItem('theme') )
 
 
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [hoveredIndex, setHoveredIndex] = useState<any>(null);
 
   const handleMouseEnter = (index) => {
     setHoveredIndex(index);
@@ -75,7 +70,8 @@ function changeTheme(){
 
   }
 
-}    const { mode, toggleColorMode } = useThemeContext();
+}    
+const { mode, toggleColorMode } = useThemeContext();
 
 function logout(name){
   if(name==="Logout") {

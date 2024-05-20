@@ -1,6 +1,6 @@
 import { createTheme } from "@mui/material";
 import React from "react";
-import theme, { getDesignTokens } from "./theme";
+import theme, { getDesignTokens } from "./theme.tsx";
 
 export const useColorTheme = () => {
   const [mode, setMode] = React.useState(localStorage.getItem('theme') || "light");

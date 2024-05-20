@@ -1,28 +1,14 @@
 import React, { useEffect, useState } from "react";
-import NavBar from "./NavBar";
+import NavBar from "./NavBar.tsx";
 import {
-  Avatar,
-  Grid,
   Box,
-  AppBar,
-  Toolbar,
-  Typography,
-  Tab,
-  Tabs,
+  Typography
 } from "@mui/material";
-import CssBaseline from "@mui/material/CssBaseline";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+
 import { CardMedia } from "@mui/material";
 import Button from "@mui/material/Button";
 
-const defaultTheme = createTheme({
-    palette: {
-        type: 'dark',
-      },
-  typography: {
-    fontFamily: ["sans-serif"].join(","),
-  },
-});
+
 
 // contextprovider,(theme provoder)
 // life component
@@ -47,8 +33,7 @@ export default function Home() {
           color: "text.primary",
         }}
       >
-        {/* <ThemeProvider theme={defaultTheme}>
-      <CssBaseline />   */}
+       
 
         <Box
           m={1}
@@ -117,7 +102,6 @@ export default function Home() {
           />
         </Box>
 
-        {/* </ThemeProvider> */}
       </div>
     </div>
   );
