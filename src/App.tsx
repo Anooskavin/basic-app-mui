@@ -4,6 +4,7 @@ import router from './components/Route.tsx'
 import React from 'react';
 import { useThemeContext } from './theme/ThemeContextProvider.tsx';
 import { CssBaseline, ThemeProvider } from "@mui/material";
+import NavBar from './components/NavBar.tsx';
 
 
 

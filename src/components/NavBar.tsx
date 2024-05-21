@@ -14,7 +14,11 @@ import { useThemeContext } from "../theme/ThemeContextProvider.tsx";
 import { NavBarMenuItems } from "../data/NavBarMenuItems.tsx";
 
 
-export default function NavBar(props) {
+export default function NavBar() {
+ 
+  
+
+
   const [searchHovered, setSearchHovered] = useState<Boolean>(false);
   const [themeHovered, setThemeHovered] = useState<Boolean>(false);
 
@@ -40,7 +44,7 @@ export default function NavBar(props) {
   
 
   return (
-    <div>
+    <div style={{position: 'fixed', paddingRight : '10%'}}>
       
       <Box
         sx={{
@@ -81,7 +85,7 @@ export default function NavBar(props) {
                 sx={{
                   ml: 0.5,
                   bgcolor:
-                    menu.name === props.page
+                    menu.name.toLowerCase() === window.location.pathname.split('/')[1] || (window.location.pathname.split('/')[1] === '' &&  menu.name.toLowerCase() ==='home')   
                       ? "navbar.avatar"
                       : hoveredIndex === index
                       ? "navbar.avatar"

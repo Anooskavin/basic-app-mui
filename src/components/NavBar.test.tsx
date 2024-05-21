@@ -41,7 +41,7 @@ it("Toggle Dark Functionality", async () => {
 
     render(
     <MemoryRouter>
-        <NavBar />
+        <NavBar  />
     </MemoryRouter>
     );
     
@@ -64,7 +64,7 @@ it("Toggle Dark Functionality", async () => {
   it("Hover Functionality", async () => {
     render(
       <MemoryRouter>
-        <NavBar />
+        <NavBar  />
       </MemoryRouter>
     );
     fireEvent.mouseEnter(screen.getByTestId('icon-hover-Home'));

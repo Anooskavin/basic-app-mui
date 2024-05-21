@@ -13,17 +13,17 @@ export default function Home() {
 
     
   return (
-    <div style={{ display: "flex", flexDirection: "row" }}>
-      <NavBar page={"Home"}  />
+    <div >
+      {/* <NavBar name={'Home'}  /> */}
       <div
         style={{
           backgroundColor: 'background.default',
           width: "100%",
-          height: "100vh",
-          overflow: "auto",
+          height: "45vh",
           display: "flex",
           flexDirection: "row",
           color: "text.primary",
+          paddingLeft: '6%'
         }}
       >
        
@@ -32,11 +32,11 @@ export default function Home() {
           m={1}
           sx={{
             bgcolor: 'divider' ,
-            height: "50vh",
+            minHeight: "45.5vh",
             width: "50%",
             borderRadius: 3,
-
             marginTop: "20px",
+            
           }}
         >
           <Typography variant="h3" sx={{ fontSize: 82, padding: 4 }}>
@@ -60,6 +60,7 @@ export default function Home() {
               marginLeft: 4,
               bgcolor: "button.background",
               color: "text.button",
+             
             }}
           >
             {" "}
@@ -78,7 +79,7 @@ export default function Home() {
           m={1}
           sx={{
             bgcolor: 'divider' ,
-            height: "50vh",
+            height: "45.5vh",
             width: "50%",
             borderRadius: 3,
             marginTop: "20px",
@@ -96,6 +97,8 @@ export default function Home() {
         </Box>
 
       </div>
+
+      
     </div>
   );
 }
