@@ -1,16 +1,17 @@
 import React, { useEffect } from "react";
 
 import CircularProgress from "@mui/material/CircularProgress";
+import { Box } from "@mui/material";
 
 export default function Logout() {
   useEffect(() => {
     setTimeout(() => {
       localStorage.clear();
       window.location.replace("/");
-    }, 1000);
+    });
   }, );
   return (
-    <div
+    <Box
       style={{
         display: "flex",
         justifyContent: "center",
@@ -18,7 +19,7 @@ export default function Logout() {
         height: "100vh",
       }}
     >
-      <CircularProgress sx={{color:"background"}} />
-    </div>
+      <CircularProgress sx={{color:""}} />
+    </Box>
   );
 }

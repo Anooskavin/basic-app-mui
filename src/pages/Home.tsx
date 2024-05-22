@@ -1,5 +1,4 @@
 import React from "react";
-import NavBar from "../components/NavBar.tsx";
 import {
   Box,
   Typography
@@ -13,9 +12,9 @@ export default function Home() {
 
     
   return (
-    <div >
+    <Box >
       {/* <NavBar name={'Home'}  /> */}
-      <div
+      <Box
         style={{
           backgroundColor: 'background.default',
           width: "100%",
@@ -36,16 +35,15 @@ export default function Home() {
             width: "50%",
             borderRadius: 3,
             marginTop: "20px",
-            
           }}
         >
-          <Typography variant="h3" sx={{ fontSize: 82, padding: 4 }}>
+          <Typography variant="h3" sx={{ fontSize: 82, padding: 4 ,color: "textcolor"}}>
             Welcome, {localStorage.getItem("username")}
           </Typography>
 
           <Typography
             variant="h1"
-            sx={{ fontSize: 32, textAlign: "justify", padding: 4 }}
+            sx={{ fontSize: 32, textAlign: "justify", padding: 4, color: "textcolor" }}
           >
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
@@ -79,7 +77,7 @@ export default function Home() {
           m={1}
           sx={{
             bgcolor: 'divider' ,
-            height: "45.5vh",
+            height: "45vh",
             width: "50%",
             borderRadius: 3,
             marginTop: "20px",
@@ -96,9 +94,9 @@ export default function Home() {
           />
         </Box>
 
-      </div>
+      </Box>
 
       
-    </div>
+    </Box>
   );
 }

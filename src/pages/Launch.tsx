@@ -1,5 +1,4 @@
 import React from "react";
-import NavBar from "../components/NavBar.tsx";
 import {
   Box,
   Typography,
@@ -15,9 +14,9 @@ export default function Launch() {
 
     
   return (
-    <div >
+    <Box >
       {/* <NavBar name={"Launch"}  /> */}
-      <div
+      <Box
         style={{
         backgroundColor: "background.default",
         color: "text.primary",
@@ -33,13 +32,13 @@ export default function Launch() {
           <Typography
             variant="h3"
             sx={{ fontSize: 72, 
-                 padding: 8 }}
+                 padding: 8 ,  color: "textcolor"}}
           >
             {" "}
             News & Launches{" "}
           </Typography>
 
-          <div style={{ display: "flex", flexDirection: "row" }}>
+          <Box style={{ display: "flex", flexDirection: "row" }}>
           <Box
            
             sx={{
@@ -62,7 +61,7 @@ export default function Launch() {
 
             <Typography
               variant="h1"
-              sx={{ fontSize: 24, textAlign: "justify", padding: 4 }}
+              sx={{ fontSize: 24, textAlign: "justify", padding: 4, color: "textcolor" }}
             >
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
@@ -91,7 +90,7 @@ export default function Launch() {
 
             <Typography
               variant="h1"
-              sx={{ fontSize: 24, textAlign: "justify", padding: 4 }}
+              sx={{ fontSize: 24, textAlign: "justify", padding: 4,  color: "textcolor" }}
             >
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
@@ -123,7 +122,7 @@ export default function Launch() {
 
             <Typography
               variant="h1"
-              sx={{ fontSize: 24, textAlign: "justify", padding: 4 }}
+              sx={{ fontSize: 24, textAlign: "justify", padding: 4 , color: "textcolor"}}
             >
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
@@ -132,8 +131,8 @@ export default function Launch() {
           </Box>
 
           
-          </div>
-      </div>
-    </div>
+          </Box>
+      </Box>
+    </Box>
   );
 }

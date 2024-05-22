@@ -1,61 +1,59 @@
-import { amber, deepOrange, grey, purple } from "@mui/material/colors";
+// import {   blue ,amber, blueGrey, brown, cyan, deepOrange, deepPurple, green, grey, indigo, lightBlue, lightGreen, lime, orange, pink, purple, red, teal, yellow  } from "@mui/material/colors";
+
+
+// const colors = [  blue, amber,blueGrey, brown, cyan, deepOrange, deepPurple, green, grey, indigo, lightBlue, lightGreen, lime, orange, pink, purple, red, teal, yellow ]
+
 
 const theme = {
   palette: {
-    primary: amber,
+        mode : 'light',
   },
 };
 
-export const getDesignTokens = (mode) => ({
+console.log("hello-color");
+
+
+export const getDesignTokens = (mode, color) => ({
   palette: {
     mode,
-    ...(mode === "light"
-      ? {
-          primary: purple,
-          divider: '#f8f1f6',
-          text: {
-            primary: '#000000',
-            secondary: grey[800],
-            button: '#ffffff'
-          },
-          background:{
-            default: "#fdfbff",
-            navbar: '#f2ecee',
-          },
-          button: {
-            background: '#9f86fd', 
-          },
-          navbar: {
-            avatar :  "#dcdaf5",
-            icon:  "#4d4156",
-            search:  '#5f5168',
-            name: "#4d4156"
-          }
-        }
-      : {
-          primary: purple,
-          divider: '#1c1b1d',
-          background: {
-            default: '#141314',
-            paper: deepOrange[900],
-            navbar: '#211F21',
-          },
-          text: {
-            primary: "#e6e1e3",
-            secondary: grey[500],
-            button: '#000000'
-          },
-          button: {
-            background: '#9f86fd',
-          },
-          navbar:{
-            avatar: "#553f5d" ,
-            icon: '#ffffff' ,
-            search:  '#ffffff',
-            name: "#dfddf8" ,
-          }
+    // ...(mode === "light"
+    //   ? {
+    //     primary: colors[color],
+    //     secondary: grey,
+    //       divider: colors[color][100],
+    //       textcolor: colors[color][900],
+    //       background:{
+    //         default: colors[color][50],
+    //         navbar: colors[color][100],
+    //       },
+    //       button: {
+    //         background: colors[color][400], 
+    //       },
+    //       navbar: {
+    //         avatar :  grey[300],
+    //         search:  colors[color][900],
+    //         name: colors[color][900]
+    //       }
+    //     }
+    //   : {
+    //     primary: colors[color],
+    //     secondary: grey,
+    //       divider: colors[color][800],
+    //       background: {
+    //         default: colors[color][900],
+    //         navbar: colors[color][800],
+    //       },
+    //       textcolor: grey,
+    //       button: {
+    //         background: grey[700],
+    //       },
+    //       navbar:{
+    //         avatar: grey[700] ,
+    //         search:  colors[color][50],
+    //         name: grey[50] ,
+    //       }
 
-        }),
+    //     }),
   },
 });
 

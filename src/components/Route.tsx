@@ -5,6 +5,7 @@ import Home from '../pages/Home.tsx';
 import Launch from '../pages/Launch.tsx';
 import ProtectedRoute from './ProtectedRoute.tsx';
 import Logout from '../pages/Logout.tsx';
+import Develop from '../pages/Develop.tsx';
 
 
 
@@ -26,6 +27,10 @@ const router = createBrowserRouter(
         {
           path: '/launch',
           element: <Launch />
+        },
+        {
+          path: '/develop',
+          element: <Develop />
         },
         {
           path: '/logout',

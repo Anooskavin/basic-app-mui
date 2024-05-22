@@ -3,7 +3,8 @@ import {
   Avatar,
   Grid,
   Box,
-  Typography
+  Typography,
+  Paper
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
@@ -16,7 +17,11 @@ import { NavBarMenuItems } from "../data/NavBarMenuItems.tsx";
 
 export default function NavBar() {
  
-  
+   // props.page
+  // navbar static
+  // how many times authorized 2
+  // add buttons check themes
+  // change in pallette
 
 
   const [searchHovered, setSearchHovered] = useState<Boolean>(false);
@@ -44,7 +49,7 @@ export default function NavBar() {
   
 
   return (
-    <div style={{position: 'fixed', paddingRight : '10%'}}>
+    <Paper style={{position: 'fixed'}} elevation={24}>
       
       <Box
         sx={{
@@ -75,7 +80,9 @@ export default function NavBar() {
               onMouseLeave={() => setSearchHovered(false)}
               data-testid={'search-icon'}
             >
-              <SearchIcon sx={{ color: "navbar.search" }} />
+              <SearchIcon sx={{ 
+                color: "navbar.search"  
+                }} />
             </Avatar>
           </Grid>
 
@@ -100,10 +107,14 @@ export default function NavBar() {
               >
                 <Link
                   to={menu.url}>
-                  {menu.icon}
+                   
+                  {mode === "light" ? menu.iconLight : menu.iconDark}
+               
                 </Link>
               </Avatar>
-              <Typography variant="subtitle2" color={"navbar.name"} mb={2}>
+              <Typography variant="subtitle2" 
+              color={"navbar.name"}
+               mb={2}>
                 {menu.name}
               </Typography>
             </Grid>
@@ -111,11 +122,11 @@ export default function NavBar() {
         </Grid>
 
         <Grid item xs={6} sm={12} mb={2}>
-          <div onClick={toggleColorMode}>
+          <Box onClick={toggleColorMode}>
             <Avatar
               sx={{
                 ml: 1,
-                bgcolor: themeHovered ? "#808080" : "transparent",
+                bgcolor: themeHovered ? "navbar.avatar" : "transparent",
                 width: 50,
                 height: 50,
                 borderRadius: "50%",
@@ -137,7 +148,7 @@ export default function NavBar() {
 
               {mode === "light" ? (
                 themeHovered ? (
-                  <NightlightRoundRoundedIcon data-testid={'theme-hover-light-icon'}/>
+                  <NightlightRoundRoundedIcon  style={{ fill: "white" }} data-testid={'theme-hover-light-icon'}/>
                 ) : (
                   <NightlightRoundRoundedIcon style={{ fill: "black" }} data-testid={'theme-light-icon'} />
                 )
@@ -145,9 +156,9 @@ export default function NavBar() {
                 <></>
               )}
             </Avatar>
-          </div>
+          </Box>
         </Grid>
       </Box>
-    </div>
+    </Paper>
   );
 }

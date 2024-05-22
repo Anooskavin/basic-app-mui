@@ -7,22 +7,42 @@ import BookRoundedIcon from "@mui/icons-material/BookRounded";
 export const NavBarMenuItems = [
   {
     name: "Home",
-    icon: <FoundationRoundedIcon sx={{ color: "navbar.search" }} />,
+    iconDark: <FoundationRoundedIcon 
+    sx={{ color: "white"  }}
+     />,
+    iconLight: <FoundationRoundedIcon 
+     sx={{ color: "black"  }}
+      />,
     url: "/",
   },
   {
     name: "Launch",
-    icon: <AppsOutlinedIcon sx={{ color: "navbar.search" }} />,
+    iconDark: <AppsOutlinedIcon 
+    sx={{ color:  "white"   }} 
+    />,
+    iconLight: <AppsOutlinedIcon 
+    sx={{ color: "black"   }} 
+    />,
     url: "/launch",
   },
   {
     name: "Develop",
-    icon: <CodeOutlinedIcon sx={{ color: "navbar.search" }} />,
-    url: "/",
+    iconDark: <CodeOutlinedIcon 
+    sx={{ color:  "white"  }} 
+    />,
+    iconLight: <CodeOutlinedIcon 
+    sx={{ color: "black"  }} 
+    />,
+    url: "/develop",
   },
   {
     name: "Logout",
-    icon: <BookRoundedIcon sx={{ color: "navbar.search" }} />,
+    iconDark: <BookRoundedIcon 
+    sx={{ color:  "white"  }} 
+    />,
+    iconLight: <BookRoundedIcon 
+    sx={{ color: "black"  }} 
+    />,
     url: "/logout",
   },
 ];
