@@ -6,6 +6,7 @@ import Launch from '../pages/Launch.tsx';
 import ProtectedRoute from './ProtectedRoute.tsx';
 import Logout from '../pages/Logout.tsx';
 import Develop from '../pages/Develop.tsx';
+import Profile from '../pages/Profile.tsx';
 
 
 
@@ -31,6 +32,10 @@ const router = createBrowserRouter(
         {
           path: '/develop',
           element: <Develop />
+        },
+        {
+          path: '/profile',
+          element: <Profile />
         },
         {
           path: '/logout',

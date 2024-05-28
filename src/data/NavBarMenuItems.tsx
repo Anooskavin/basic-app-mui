@@ -2,7 +2,8 @@ import React from "react";
 import FoundationRoundedIcon from "@mui/icons-material/FoundationRounded";
 import AppsOutlinedIcon from "@mui/icons-material/AppsOutlined";
 import CodeOutlinedIcon from "@mui/icons-material/CodeOutlined";
-import BookRoundedIcon from "@mui/icons-material/BookRounded";
+import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
+import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
 
 export const NavBarMenuItems = [
   {
@@ -36,11 +37,21 @@ export const NavBarMenuItems = [
     url: "/develop",
   },
   {
-    name: "Logout",
-    iconDark: <BookRoundedIcon 
+    name: "Profile",
+    iconDark: <PersonOutlineRoundedIcon 
     sx={{ color:  "white"  }} 
     />,
-    iconLight: <BookRoundedIcon 
+    iconLight: <PersonOutlineRoundedIcon 
+    sx={{ color: "black"  }} 
+    />,
+    url: "/profile",
+  },
+  {
+    name: "Logout",
+    iconDark: <LogoutRoundedIcon 
+    sx={{ color:  "white"  }} 
+    />,
+    iconLight: <LogoutRoundedIcon 
     sx={{ color: "black"  }} 
     />,
     url: "/logout",

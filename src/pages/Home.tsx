@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Typography
@@ -6,9 +6,24 @@ import {
 
 import { CardMedia } from "@mui/material";
 import Button from "@mui/material/Button";
+import { jwtDecode } from "jwt-decode";
+import useAuth from "../hooks/useAuth.tsx";
 
+type DecodeType ={
+  username: string;
+}
 
 export default function Home() {   
+
+  const { cookies } = useAuth();
+  const [username, setUsername ] = useState<String>('')
+
+
+  useEffect(()=>{
+    const decoded:DecodeType  = jwtDecode(cookies.get('access_token'));
+
+    setUsername(decoded.username);
+  })
 
     
   return (
@@ -18,7 +33,7 @@ export default function Home() {
         style={{
           backgroundColor: 'background.default',
           width: "100%",
-          height: "45vh",
+          height: "100vh",
           display: "flex",
           flexDirection: "row",
           color: "text.primary",
@@ -31,14 +46,14 @@ export default function Home() {
           m={1}
           sx={{
             bgcolor: 'divider' ,
-            minHeight: "45.5vh",
+            height: "fit-content",
             width: "50%",
             borderRadius: 3,
             marginTop: "20px",
           }}
         >
           <Typography variant="h3" sx={{ fontSize: 82, padding: 4 ,color: "textcolor"}}>
-            Welcome, {localStorage.getItem("username")}
+            Welcome, {username}
           </Typography>
 
           <Typography
@@ -58,7 +73,7 @@ export default function Home() {
               marginLeft: 4,
               bgcolor: "button.background",
               color: "text.button",
-             
+             bottom: 12
             }}
           >
             {" "}

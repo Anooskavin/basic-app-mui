@@ -5,6 +5,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Avatar, Box, Grid, TextField, Typography } from "@mui/material";
 import PersonIcon from '@mui/icons-material/Person';
 import Button from '@mui/material/Button';
+import useAuth from "../hooks/useAuth.tsx";
+
 
 
 const defaultTheme =  createTheme()
@@ -13,8 +15,9 @@ const defaultTheme =  createTheme()
 export default function Login() {
 
   const [errorMessage, setErrorMessage] =  useState<String>("")
+  const { handleLogin } = useAuth()
 
-  function submitForm(event){
+  async function submitForm(event){
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
@@ -27,39 +30,21 @@ export default function Login() {
       password : formDataPassword
     };
 
-    fetch('http://127.0.0.1:3001/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(loginData),
-  })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(data => {
-      if(data.status === 200){
-        console.log('Login response:', data);
-        setErrorMessage("")
-        localStorage.setItem("username",loginData.username)
-        localStorage.setItem(loginData.username,Math.random().toString(36).substr(2))
-        localStorage.setItem("basic-app",Math.random().toString(36).substr(2))
-        window.location.replace('/')
-      }
-      else{
-        console.log('Login response:', data);
-        setErrorMessage("Login Failed")
-      }
-      
+    const response =  await handleLogin(loginData);
 
-    })
-    .catch(error => {
-      console.error('Error:', error);
+    console.log( response);
+
+    if(response.status == 401){
+      setErrorMessage("Login Failed")
+    }else if(response.status == 200){
+      setErrorMessage("")
+      window.location.replace('/');
+    }else{
       setErrorMessage("Network Error")
-    });
+    }
+    
+
+ 
   }
 
   return (
