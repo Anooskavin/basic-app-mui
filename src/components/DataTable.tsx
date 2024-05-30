@@ -4,31 +4,7 @@ import React from "react";
 export default  function DataTable(props) {
 
     return(
-        <Box
-        m={1}
-        sx={{
-          bgcolor: "divider",
-          borderRadius: 3,
-          marginTop: "20px",
-        }}
-      >
-        <Typography
-          variant="h3"
-          sx={{ fontSize: 82, padding: 4, color: "textcolor" }}
-        >
-          Users Table
-        </Typography>
-
-        <Box
-          sx={{
-            mt: 3,
-            display: "flex",
-            flexDirection: "column",
-            gap: 3,
-            alignItems: "center",
-            mb: 3,
-          }}
-        >
+        <Box>
           <TableContainer component={Paper}>
             <Table 
           //   sx={{ minWidth: 650 }} 
@@ -60,7 +36,7 @@ export default  function DataTable(props) {
           {props.tableErrorMessage && (
             <Typography color="#FF0000">{props.tableErrorMessage}</Typography>
           )}
-        </Box>
+    
       </Box>
     );
   

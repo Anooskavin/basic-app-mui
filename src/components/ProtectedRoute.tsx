@@ -9,7 +9,6 @@ const ProtectedRoute = ( ) => {
 
   const { cookies } = useAuth();
 
-  console.log(cookies.get('access_token'))
 
   if (cookies.get('access_token')==null ) {
     return <Navigate to="/login" replace />;

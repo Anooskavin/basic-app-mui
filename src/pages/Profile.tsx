@@ -16,6 +16,7 @@ import React, { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth.tsx";
 import { jwtDecode } from "jwt-decode";
 import DataTable from "../components/DataTable.tsx";
+import TableData from "../components/TableData.tsx";
 
 // material react table
 
@@ -257,70 +258,49 @@ export default function Profile() {
       </Box>
 
       {decoded.role === "admin" && (
+        <Box
+          m={1}
+          sx={{
+            bgcolor: "divider",
+            borderRadius: 3,
+            marginTop: "20px",
+          }}
+        >
+          <Typography
+            variant="h3"
+            sx={{ fontSize: 82, padding: 4, color: "textcolor" }}
+          >
+            Users Table
+          </Typography>
 
-        <DataTable tableHeader={tableHeader} tableData={tableData} tableErrorMessage={tableErrorMessage} />
+          <Box
+            sx={{
+              mt: 3,
+              display: "flex",
+              flexDirection: "column",
+              gap: 3,
+              //   alignItems: "center",
+              mb: 3,
+            }}
+          >
+            <TableData
+              tableHeader={tableHeader}
+              tableData={tableData}
+              tableErrorMessage={tableErrorMessage}
+              cookies={cookies}
+              adminid={decoded.userid}
+            />
 
-
-
-        // <Box
-        //   m={1}
-        //   sx={{
-        //     bgcolor: "divider",
-        //     borderRadius: 3,
-        //     marginTop: "20px",
-        //   }}
-        // >
-        //   <Typography
-        //     variant="h3"
-        //     sx={{ fontSize: 82, padding: 4, color: "textcolor" }}
-        //   >
-        //     Users Table
-        //   </Typography>
-
-        //   <Box
-        //     sx={{
-        //       mt: 3,
-        //       display: "flex",
-        //       flexDirection: "column",
-        //       gap: 3,
-        //       alignItems: "center",
-        //       mb: 3,
-        //     }}
-        //   >
-        //     <TableContainer component={Paper}>
-        //       <Table 
-        //     //   sx={{ minWidth: 650 }} 
-        //       aria-label="simple table">
-        //         <TableHead>
-        //           <TableRow>
-        //             <TableCell align="center">{tableHeader[0]}</TableCell>
-        //             <TableCell align="center">{tableHeader[1]}</TableCell>
-        //             <TableCell align="center">{tableHeader[2]}</TableCell>
-        //             <TableCell align="center">{tableHeader[3]}</TableCell>
-        //           </TableRow>
-        //         </TableHead>
-        //         <TableBody>
-        //           {tableData.map((data, dataValue) => (
-        //             <TableRow
-        //               key={dataValue}
-        //               //   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-        //             >
-        //               <TableCell align="center">{data.userid}</TableCell>
-        //               <TableCell align="center">{data.username}</TableCell>
-        //               <TableCell align="center">{data.role}</TableCell>
-        //               <TableCell align="center">{dataValue}</TableCell>
-        //             </TableRow>
-        //           ))}
-        //         </TableBody>
-        //       </Table>
-        //     </TableContainer>
-
-        //     {tableErrorMessage && (
-        //       <Typography color="#FF0000">{tableErrorMessage}</Typography>
-        //     )}
-        //   </Box>
-        // </Box>
+            {/* <DataTable
+                     tableHeader={tableHeader}
+                      tableData={tableData}
+                      tableErrorMessage={tableErrorMessage}
+                    /> */}
+          </Box>
+        </Box>
       )}
+
+      {decoded.role === "admin" && <></>}
     </Box>
   );
 }
